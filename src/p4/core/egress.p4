@@ -6,7 +6,7 @@
 control MyEgress(
     inout headers hdr,
     inout metadata meta,
-    inout stanard_metadata_t stanard_metadata)
+    inout standard_metadata_t standard_metadata)
 {
     counter(BLOCK_ENTRIES, CounterType.packets) packet_freq_cnt;
 
