@@ -65,8 +65,8 @@ control MyIngress (
         default_action = drop();
     }
 
-    action mark_to_block(bit<1> block) {
-        hdr.block.isBlock = block;
+    action mark_to_block() {
+        meta.block = 1;
     }
 
     table lookup_table {
@@ -84,7 +84,7 @@ control MyIngress (
     apply {
         // lookup_table.apply();
         // if(hdr.block.isBlock != 1) {
-            l2_forward.apply();
+        l2_forward.apply();
         // }
     }
 }
