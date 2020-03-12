@@ -50,7 +50,7 @@
     "switches": {
       "s1": {
         "cli_input": "s1-commands.txt",
-        "program": "core/netcache.p4",
+        "program": "core/core.p4",
         "cpu_port": true
       }
     }
