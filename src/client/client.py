@@ -40,7 +40,7 @@ class NetCacheClient:
         start_time = time.time()
 
         self.udps.connect((self.get_node(key), self.port))
-        self.udps.send("client1")
+        self.udps.send(str.encode("client1"))
 
         data = self.udps.recv(1024)
         
@@ -56,7 +56,7 @@ class NetCacheClient:
 
         start_time = time.time()
 
-        tcps.send("client1")
+        tcps.send(str.encode("client1"))
         status = tcps.recv(1024)
 
         latency = time.time() - start_time
