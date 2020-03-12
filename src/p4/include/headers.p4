@@ -80,7 +80,6 @@ struct headers {
     ipv4_t       ipv4;
     tcp_t        tcp;
 	udp_t		 udp;
-	block_t      block;
 }
 
 #endif   // HEADERS_P4
