@@ -65,16 +65,16 @@ control MyIngress (
         default_action = drop();
     }
 
-    action mark_to_block() {
-        hdr.block.isBlock = 1;
+    action mark_to_block(bit<1> block) {
+        hdr.block.isBlock = block;
     }
 
     table lookup_table {
         key = {
-            hdr.ipv4.srcAddr : exact;
+            hdr.ipv4.srcAddr : lpm;
         }
         actions = {
-            NoAction;
+            mark_to_block;
         }
         size = BLOCK_ENTRIES;
         default_action = NoAction;
