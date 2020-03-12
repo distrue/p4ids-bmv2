@@ -16,5 +16,5 @@ fi
 
 
 for i in $(seq $n_servers); do
-	mx server$i $PYTHON $NCACHE_DIR/src/server/server.py $server_flags &
+	mx server$i $PYTHON $ROOT_DIR/src/server/server.py $server_flags &
 done
