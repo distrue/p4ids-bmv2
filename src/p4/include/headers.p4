@@ -6,6 +6,7 @@
 
 ////////  defines  ///////
 #define BLOCK_ENTRIES 65536
+#define IPV4_ENTRIES 65535
 
 /////  common headers  /////
 const bit<16> TYPE_IPV4 = 0x800;

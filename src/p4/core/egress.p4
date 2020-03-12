@@ -8,10 +8,10 @@ control MyEgress(
     inout metadata meta,
     inout standard_metadata_t standard_metadata)
 {
-    counter(BLOCK_ENTRIES, CounterType.packets) packet_freq_cnt;
+    counter((bit<32>)IPV4_ENTRIES * IPV4_ENTRIES, CounterType.packets) packet_freq_cnt;
 
     apply {
-        packet_freq_cnt.count((bit<16>) hdr.ipv4.srcAddr);
+        packet_freq_cnt.count((bit<32>) hdr.ipv4.srcAddr);
     }
 }
 
