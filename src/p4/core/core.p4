@@ -8,5 +8,6 @@
 V1Switch(
     MyParser(),
     MyIngress(),
-    MyEgress()
+    MyEgress(),
+    MyDeparser()
 ) main;
