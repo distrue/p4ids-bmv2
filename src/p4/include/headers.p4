@@ -1,3 +1,6 @@
+#ifndef HEADERS_P4
+#define HEADERS_P4
+
 #include <core.p4>
 #include <v1model.p4>
 
@@ -75,3 +78,5 @@ struct headers {
 	udp_t		 udp;
 	block_t      block;
 }
+
+#endif   // HEADERS_P4
