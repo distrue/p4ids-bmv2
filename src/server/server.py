@@ -128,4 +128,4 @@ if __name__ == "__main__":
     parser.add_argument('--suppress-output', help='supress output printing messages', action='store_true')
     args = parser.parse_args()
 
-    main(args.args.suppress_output)
+    main(args.suppress_output)
