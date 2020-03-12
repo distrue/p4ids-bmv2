@@ -68,6 +68,7 @@ header udp_t {
 /////////  specific  /////////
 header block_t {
     bit<1> isBlock;
+    bit<7> padding;
 }
 
 /////////  unify  ///////////
