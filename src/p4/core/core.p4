@@ -6,6 +6,10 @@
 #include "ingress.p4"
 
 
+control MyVerifyChecksum(inout headers hdr, inout metadata meta) {
+    apply {  }
+}
+
 control MyComputeChecksum(inout headers hdr, inout metadata meta) {
      apply {
         /*
@@ -87,6 +91,7 @@ control MyComputeChecksum(inout headers hdr, inout metadata meta) {
 
 V1Switch(
     MyParser(),
+    MyVerifyChecksum(),
     MyIngress(),
     MyEgress(),
     MyComputeChecksum(),
