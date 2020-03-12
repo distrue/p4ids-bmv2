@@ -49,7 +49,7 @@ control MyIngress (
     action drop() {
         mark_to_drop(standard_metadata);
     }
-    action set_egress_port(egressSpec_t port) {
+    action set_egress_port(bit<9> port) {
         standard_metadata.egress_spec = port;
     }
 
