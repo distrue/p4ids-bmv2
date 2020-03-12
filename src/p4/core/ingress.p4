@@ -82,11 +82,9 @@ control MyIngress (
     }
 
     apply {
-        if(hdr.block.isValid()) {
-            lookup_table.apply();
-        }
-        if(hdr.block.isBlock != 1) {
+        // lookup_table.apply();
+        // if(hdr.block.isBlock != 1) {
             l2_forward.apply();
-        }
+        // }
     }
 }
