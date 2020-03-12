@@ -1,1 +1,1 @@
-python3 ../src/controller/controller.py
+python ../src/controller/controller.py

@@ -54,7 +54,7 @@ class NetcacheHeader(Packet):
 class NCacheController(object):
 
     def __init__(self, sw_name, vtables_num=12):
-        self.topo = Topology(db="../p4/topology.db")
+        self.topo = Topology(db="./topology.db")
         self.sw_name = sw_name
         self.thrift_port = self.topo.get_thrift_port(self.sw_name)
         self.cpu_port = self.topo.get_cpu_port_index(self.sw_name)
