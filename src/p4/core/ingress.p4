@@ -75,6 +75,7 @@ control MyIngress (
         }
         actions = {
             mark_to_block;
+            NoAction;
         }
         size = BLOCK_ENTRIES;
         default_action = NoAction;
