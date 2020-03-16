@@ -41,6 +41,7 @@ class NetCacheClient:
 
         self.udps.connect((self.get_node(key), self.port))
         self.udps.send(str.encode("client1"))
+        print("UDP message sended")
 
         data = self.udps.recv(1024)
         
@@ -75,6 +76,7 @@ def main(n_servers, suppress):
     while True:
         time.sleep(0.1)
         # client.tcp(k, suppress=suppress)
+        print("send udp connection")
         client.udp(k, suppress=suppress)
         k += 1
                 

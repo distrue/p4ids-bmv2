@@ -84,6 +84,7 @@ class KVServer:
 
             else:
                 packet, addr = self.udpss.recvfrom(1024)
+                print(packet)
             
             if self.blocking:
                 self.incoming_requests.append((packet, addr))
