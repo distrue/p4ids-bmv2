@@ -84,7 +84,7 @@ class KVServer:
             
             else:
                 msg = "UDP"
-                self.udpss.sendto(msg, addr)
+                self.udpss.sendto(msg.encode(), addr)
             
             print("udp request")
 
@@ -96,7 +96,7 @@ class KVServer:
             packet = conn.recv(1024)
 
             msg = "TCP"
-            conn.sendall(msg)
+            conn.sendall(msg.encode())
             conn.close()
 
             print("tcp request")
