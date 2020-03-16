@@ -41,14 +41,6 @@ class KVServer:
         self.requests_cnt = 0
 
     def activate(self):
-
-        # enable logging for debuggin purposes
-        logging.basicConfig(
-                filename='log/{}.log'.format(self.name),
-                format='%(asctime)s %(levelname)-8s %(message)s',
-                level=logging.DEBUG,
-                datefmt='%d-%m-%Y %H:%M:%S')
-
         # create udp socket server
         self.udpss = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.udpss.bind((self.host, self.port))
