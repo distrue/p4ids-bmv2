@@ -6,6 +6,15 @@ SEND_PORT = 50001
 
 MAX_SUPPORTED_SERVERS = 254
 
+def convert(val):
+    return int.from_bytes(bytes(val, "utf-8"), "big")
+
+def build_message(value = ""):
+
+    msg = bytearray()
+    msg += convert(value).to_bytes(64, 'big')
+    return msg
+
 class NetCacheClient:
 
     def __init__(self, n_servers=1):
@@ -40,7 +49,7 @@ class NetCacheClient:
         start_time = time.time()
 
         self.udps.connect((self.get_node(key), self.port))
-        self.udps.send("client1".encode())
+        self.udps.send(build_message("client1"))
         print("UDP message sended")
 
         data = self.udps.recv(1024)
@@ -57,7 +66,7 @@ class NetCacheClient:
 
         start_time = time.time()
 
-        tcps.send("client1".encode())
+        tcps.send(build_message("client1"))
         status = tcps.recv(1024)
 
         latency = time.time() - start_time

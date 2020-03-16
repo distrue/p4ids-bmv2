@@ -6,10 +6,16 @@ import threading
 import sys
 import os
 
-STATISTICS_REFRESH_INTERVAL = 30.0
-
 SERVER_PORT = 50001
 
+def convert(val):
+    return int.from_bytes(bytes(val, "utf-8"), "big")
+
+def build_message(value = ""):
+
+    msg = bytearray()
+    msg += convert(value).to_bytes(64, 'big')
+    return msg
 
 class KVServer:
 
@@ -58,17 +64,6 @@ class KVServer:
         server_tcp_t = threading.Thread(target=self.handle_client_tcp_request)
         server_tcp_t.start()
 
-        # self.periodic_request_report()
-
-    def periodic_request_report(self):
-        t = threading.Timer(STATISTICS_REFRESH_INTERVAL, self.periodic_request_report)
-        t.daemon = True
-        t.start()
-
-        if not self.suppress:
-            print('[{}] Number of requests received = {}'.format(self.name, self.requests_cnt))
-
-
     def handle_client_udp_request(self):
         while True:
             if not self.blocking and len(self.incoming_requests) > 0:
@@ -83,8 +78,8 @@ class KVServer:
                 continue
             
             else:
-                msg = "UDP"
-                self.udpss.sendto(msg.encode(), addr)
+                msg = build_message("UDP")
+                self.udpss.sendto(msg, addr)
             
             print("udp request")
 
@@ -95,8 +90,8 @@ class KVServer:
             conn, addr = self.tcpss.accept()
             packet = conn.recv(1024)
 
-            msg = "TCP"
-            conn.sendall(msg.encode())
+            msg = build_message("TCP")
+            conn.sendall(msg)
             conn.close()
 
             print("tcp request")
