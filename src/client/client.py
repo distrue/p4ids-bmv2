@@ -75,8 +75,7 @@ def main(n_servers, suppress):
     k = 0
     while True:
         time.sleep(0.1)
-        # client.tcp(k, suppress=suppress)
-        print("send udp connection")
+        client.tcp(k, suppress=suppress)
         client.udp(k, suppress=suppress)
         k += 1
                 

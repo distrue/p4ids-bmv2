@@ -62,7 +62,7 @@ control MyIngress (
             drop;
         }
         size = 1024;
-        default_action = drop();
+        default_action = set_egress_port;
     }
 
     action mark_to_block() {
