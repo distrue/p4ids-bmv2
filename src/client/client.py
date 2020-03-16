@@ -12,7 +12,7 @@ def convert(val):
 def build_message(value = ""):
 
     msg = bytearray()
-    msg += convert(value).to_bytes(64, 'big')
+    msg += convert(value).to_bytes(16, 'big')
     return msg
 
 class NetCacheClient:
@@ -49,7 +49,7 @@ class NetCacheClient:
         start_time = time.time()
 
         self.udps.connect((self.get_node(key), self.port))
-        self.udps.send(build_message("client1"))
+        self.udps.send(build_message(self.get_node(key)))
         print("UDP message sended")
 
         data = self.udps.recv(1024)
@@ -66,7 +66,7 @@ class NetCacheClient:
 
         start_time = time.time()
 
-        tcps.send(build_message("client1"))
+        tcps.send(build_message(self.get_node(key)))
         status = tcps.recv(1024)
 
         latency = time.time() - start_time
